@@ -7,3 +7,11 @@ run
 ```
 echo 'export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:~/catkin_ws/src/mission8_sim/models' >> ~/.bashrc
 ```
+
+## Running Sim 
+
+```
+cd ~/catkin_ws/src/mission8_sim/scripts
+./startMultiSim.sh
+```
+

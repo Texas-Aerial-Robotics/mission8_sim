@@ -1,5 +1,5 @@
 <?xml version='1.0'?>
-<sdf version="1.6" xmlns:xacro='http://ros.org/wiki/xacro'>
+<sdf version="1.6" >
   <model name="iris_demo">
     <include>
       <uri>model://iris_with_standoffs</uri>
@@ -533,10 +533,10 @@
       <upward>0 0 1</upward>
       <link_name>iris::rotor_3</link_name>
     </plugin>
-    <plugin name="arducopter_plugin" filename="libArduPilotPlugin.so">
+    <plugin name="arducopter_plugin2" filename="libArduPilotPlugin.so">
       <fdm_addr>127.0.0.1</fdm_addr>
-      <fdm_port_in>9002</fdm_port_in>
-      <fdm_port_out>9003</fdm_port_out>
+      <fdm_port_in>9012</fdm_port_in>
+      <fdm_port_out>9013</fdm_port_out>
       <!--
           Require by APM :
           Only change model and gazebo from XYZ to XY-Z coordinates
