@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+<sdf version="1.6">
+	<model name="my_mesh">
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+            	<uri>model://walls/ArenaWallsandFloor.STL</uri>
+            	<scale>0.0005 0.0005 0.0005</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+</sdf>
