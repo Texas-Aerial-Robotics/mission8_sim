@@ -6,10 +6,27 @@
     </include>
      <include>
       <uri>model://walls</uri>
-      <pose> 5 5 0 1.57 0 0</pose>
-    </include>
+      <pose> 9 0 0 1.57 0 3.14</pose>
+     </include>
+<!-- start me trying to insert a bunker into the arena -->
+        <include>
+<uri>model://bunker</uri>
+      <pose> 9 0 0 1.57 0 3.14</pose>
+        </include>
+
+<!-- end me trying to insert a bunker into the arena -->
+
+
+    
     <include>
       <uri>model://sun</uri>
     </include>
   </world>
 </sdf>
+
+
+<!-- 1.57 -->
+<!-- red line is x axis -->
+
+<!-- x length: 9 meters? --> 
+<!-- y length ~ 18 meters -->
