@@ -37,6 +37,22 @@
     <include>
       <uri>model://sun</uri>
     </include>
+
+     <model name="drone1">
+      <pose> 2.5 2 0 0 0 1.57 </pose>
+      <include>
+        <uri>model://drone1</uri>
+         <pose> 0 0 0 0 0 0 </pose>
+      </include>
+    </model>
+    <model name="drone2">
+      <pose> 6.5 2 0 0 0 1.57 </pose>
+      <include>
+        <uri>model://drone2</uri>
+         <pose> 0 0 0 0 0 0 </pose>
+      </include>
+    </model>
+
   </world>
 </sdf>
 

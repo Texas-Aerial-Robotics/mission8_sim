@@ -128,7 +128,7 @@ LOITER> mode LAND
          <pose> 0 0 0 0 0 0 </pose>
       </include>
     </model>
-   <!--  <model name="drone2">
+    <model name="drone2">
       <pose> 1 0 0 0 0 0 </pose>
       <include>
         <uri>model://drone2</uri>
@@ -141,6 +141,6 @@ LOITER> mode LAND
         <uri>model://drone3</uri>
          <pose> 0 0 0 0 0 0 </pose>
       </include>
-    </model> -->
+    </model>
   </world>
 </sdf>
