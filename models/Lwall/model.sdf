@@ -7,7 +7,7 @@
           <geometry>
             <mesh>
             	<uri>model://Lwall/LWall.dae</uri>
-            	<scale>0.0005 0.0005 0.0005</scale>
+            	<scale>.3048 .3048 .3048</scale>
             </mesh>
           </geometry>
         </visual>

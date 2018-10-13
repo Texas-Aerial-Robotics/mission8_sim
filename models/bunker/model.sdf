@@ -7,7 +7,7 @@
           <geometry>
             <mesh>
             	<uri>model://bunker/bunker.dae</uri>
-            	<scale>0.0005 0.0005 0.0005</scale>
+            	<scale>.3048 .3048 .3048</scale>
             </mesh>
           </geometry>
         </visual>
