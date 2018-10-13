@@ -6,7 +6,7 @@
         <visual name="visual">
           <geometry>
             <mesh>
-            	<uri>model://bunker/Bunker.STL</uri>
+            	<uri>model://bunker/bunker.dae</uri>
             	<scale>0.0005 0.0005 0.0005</scale>
             </mesh>
           </geometry>

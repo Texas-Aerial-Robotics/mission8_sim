@@ -5,12 +5,59 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2018-03-22, commit time:14:10, hash:f4dc9f9d68b</authoring_tool>
     </contributor>
-    <created>2018-10-12T18:56:26</created>
-    <modified>2018-10-12T18:56:26</modified>
+    <created>2018-10-13T11:53:07</created>
+    <modified>2018-10-13T11:53:07</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
-  <library_images/>
+  <library_images>
+    <image id="brick_text_jpg" name="brick_text_jpg">
+      <init_from>brick_text.jpg</init_from>
+    </image>
+  </library_images>
+  <library_effects>
+    <effect id="CaMoFlAgE-effect">
+      <profile_COMMON>
+        <newparam sid="brick_text_jpg-surface">
+          <surface type="2D">
+            <init_from>brick_text_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="brick_text_jpg-sampler">
+          <sampler2D>
+            <source>brick_text_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="brick_text_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="CaMoFlAgE-material" name="CaMoFlAgE">
+      <instance_effect url="#CaMoFlAgE-effect"/>
+    </material>
+  </library_materials>
   <library_geometries>
     <geometry id="meshId0_name-mesh" name="meshId0_name">
       <mesh>
@@ -60,7 +107,13 @@
     <visual_scene id="Scene" name="Scene">
       <node id="_STL_BINARY_" name="_STL_BINARY_" type="NODE">
         <matrix sid="transform">0.002998494 0 0 0 0 -1.31068e-10 -0.002998494 0 0 0.002998494 -1.31068e-10 0 0 0 0 1</matrix>
-        <instance_geometry url="#meshId0_name-mesh" name="_STL_BINARY_"/>
+        <instance_geometry url="#meshId0_name-mesh" name="_STL_BINARY_">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="CaMoFlAgE-material" target="#CaMoFlAgE-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
     </visual_scene>
   </library_visual_scenes>
