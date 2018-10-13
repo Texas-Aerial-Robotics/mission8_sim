@@ -6,7 +6,7 @@
         <visual name="visual">
           <geometry>
             <mesh>
-            	<uri>model://Lwall/Wall.STL</uri>
+            	<uri>model://Lwall/LWall.dae</uri>
             	<scale>0.0005 0.0005 0.0005</scale>
             </mesh>
           </geometry>
