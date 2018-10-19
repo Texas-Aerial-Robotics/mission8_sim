@@ -15,14 +15,7 @@
         </include>
 
 
-<model name="ArenaWall">
-        <include>
-<uri>model://walls</uri>
-      <pose> 2.5 4 0 1.57 0 3.14</pose>
-        </include>
-      </model>
-
-
+ 
 
       <model name="Lwall1">
         <include>
