@@ -6,13 +6,16 @@
     </include>
      <include>
       <uri>model://walls</uri>
-      <pose> 9 0 -.25 1.57 0 3.14</pose>
+      <pose> 0 0 -.25 1.57 0 1.57</pose>
      </include>
-<!-- start me trying to insert a bunker into the arena -->
+
+
+      <model name="Bunker">
         <include>
 <uri>model://bunker</uri>
       <pose> 4 9 0 0 0 0 </pose>
         </include>
+      </model>
 
 
 <model name="ArenaWall">
@@ -27,7 +30,7 @@
       <model name="Lwall1">
         <include>
 <uri>model://Lwall</uri>
-      <pose> 2.5 4 0 1.57 0 3.14</pose>
+      <pose> 2.5 4 -1 1.57 0 0</pose>
         </include>
       </model>
 
@@ -38,7 +41,6 @@
         </include>
         </model>
 
-<!-- end me trying to insert a bunker into the arena -->
 
 
     
