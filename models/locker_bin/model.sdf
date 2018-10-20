@@ -6,8 +6,8 @@
         <visual name="visual">
           <geometry>
             <mesh>
-            	<uri>model://locker_bin.dae</uri>
-            	<scale>50 50 50</scale>
+            	<uri>model://locker_bin/locker_bin.dae</uri>
+            	<scale>1 1 1</scale>
             </mesh>
           </geometry>
         </visual>
