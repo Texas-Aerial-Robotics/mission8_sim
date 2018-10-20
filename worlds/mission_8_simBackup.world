@@ -6,7 +6,7 @@
     </include>
      <include>
       <uri>model://walls</uri>
-      <pose> 9 0 -.25 1.57 0 3.14</pose>
+      <pose> 9 0 -.5 1.57 0 3.14</pose>
      </include>
 <!-- start me trying to insert a bunker into the arena -->
         <include>
@@ -14,8 +14,13 @@
       <pose> 4 9 0 0 0 0 </pose>
         </include>
 
+<!-- <model name="locker_bin">
+   <include>
+<uri>model://locker_bin</uri>
+      <pose> 10 8 7 1.57 0 4.71</pose>
+        </include>
+        </model> -->
 
- 
 
       <model name="Lwall1">
         <include>
@@ -31,7 +36,20 @@
         </include>
         </model>
 
+        <model name="locker_bin">
+         <include>
+<uri>model://locker_bin</uri>
+      <pose> 7 5 10 1.57 0 4.71</pose>
+        </include>
+        </model>
+
 <!-- end me trying to insert a bunker into the arena -->
+
+
+<!-- me trying to insert the lock bins into the arena -->
+<!-- <model name="Lockbox1"> -->
+       
+ 
 
 
     
