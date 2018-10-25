@@ -1,0 +1,60 @@
+<sdf version="1.5">
+<world name="default">
+      <physics type="ode">
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>100</iters>
+          <sor>1.0</sor>
+        </solver>
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.9</erp>
+          <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
+          <contact_surface_layer>0.0</contact_surface_layer>
+        </constraints>
+      </ode>
+      <real_time_update_rate>0</real_time_update_rate>
+      <max_step_size>0.0025</max_step_size>
+    </physics>
+
+    <include>
+      <uri>model://asphalt_plane</uri>
+      <scale>5 5 5</scale>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name="firestation1">
+      <include>
+        <uri>model://fire_station</uri>
+        <pose>0 -20 0 0 0 0</pose> 
+      </include>
+    </model>
+    <model name="gas_station1">
+      <include>
+        <uri>model://gas_station</uri>
+        <pose>0 20 0 0 0 0</pose> 
+      </include>
+    </model>
+     <model name="house1">
+      <include>
+        <uri>model://house_1</uri>
+        <pose>20 20 0 0 0 0</pose> 
+      </include>
+    </model>
+     <model name="house2">
+      <include>
+        <uri>model://house_1</uri>
+        <pose>40 20 0 0 0 0</pose> 
+      </include>
+    </model>
+     <model name="house3">
+      <include>
+        <uri>model://house_1</uri>
+        <pose>60 20 0 0 0 0</pose> 
+      </include>
+    </model>
+</world>
+</sdf>
