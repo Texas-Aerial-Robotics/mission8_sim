@@ -28,6 +28,13 @@
         </include>
         </model>
 
+<model name="locker_bin">
+         <include>
+<uri>model://locker_bin</uri>
+      <pose> 7 5 10 1.57 0 4.71</pose>
+        </include>
+        </model>
+
 
 
     
