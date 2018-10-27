@@ -3,6 +3,14 @@
 	<model name="Bunker">
       <static>true</static>
       <link name="body">
+        <collision name = 'collision'>
+          <geometry>
+            <mesh>
+              <uri>model://bunker/bunker.dae</uri>
+              <scale>.3048 .3048 .3048</scale>
+            </mesh>
+          </geometry>
+        </collision>
         <visual name="visual">
           <geometry>
             <mesh>
