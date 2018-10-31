@@ -1,36 +1,40 @@
 <?xml version="1.0"?>
 <sdf version="1.4">
   <world name="default">
-    <include>
-      <uri>model://ground_plane</uri>
-    </include>
      <include>
       <uri>model://walls</uri>
-      <pose> 9 0 -.25 1.57 0 3.14</pose>
+      <pose> 0 0 -.61 1.57 0 1.57</pose>
      </include>
-<!-- start me trying to insert a bunker into the arena -->
+
+
+      <model name="Bunker">
         <include>
 <uri>model://bunker</uri>
-      <pose> 4 9 0 1.57 0 0</pose>
+      <pose> 5.5 0 0 0 0 00.7854 </pose>
         </include>
-
-
+      </model>
 
       <model name="Lwall1">
         <include>
 <uri>model://Lwall</uri>
-      <pose> 2.5 4 0 1.57 0 3.14</pose>
+      <pose> 4.5 -8 0 1.57 0 3.14</pose>
         </include>
       </model>
 
         <model name="Lwall2">
          <include>
 <uri>model://Lwall</uri>
-      <pose> 7 5 0 1.57 0 4.71</pose>
+      <pose> 11.5 -6 0 1.57 0 4.71</pose>
         </include>
         </model>
 
-<!-- end me trying to insert a bunker into the arena -->
+<model name="locker_bin">
+         <include>
+<uri>model://locker_bin</uri>
+      <pose> 7 5 10 1.57 0 4.71</pose>
+        </include>
+        </model>
+
 
 
     
@@ -38,8 +42,8 @@
       <uri>model://sun</uri>
     </include>
 
-     <model name="drone1">
-      <pose> 2.5 2 0 0 0 1.57 </pose>
+       <model name="drone1">
+      <pose> 2.5 -12 0.2 0 0 1.57 </pose>
       <include>
         <uri>model://drone1</uri>
          <pose> 0 0 0 0 0 0 </pose>
@@ -73,7 +77,6 @@
             </script>
           </material>
         </visual>
-
         <sensor name="camera" type="camera">
          
           <camera>
@@ -90,7 +93,6 @@
           <always_on>1</always_on>
           <update_rate>10</update_rate>
           <visualize>true</visualize>
-
           <!--  <plugin name="irlock" filename="libArduCopterIRLockPlugin.so">
               <fiducial>irlock_beacon_01</fiducial>
           </plugin> -->
@@ -108,11 +110,8 @@
           <distortionT1>0.0</distortionT1>
           <distortionT2>0.0</distortionT2>
       </plugin>
-
         </sensor>
-
       </link>
-
       <!-- attach camera -->
       <joint type="fixed" name="base_camera_joint">
         <pose>0 0 0.0 0 0 0</pose>
@@ -127,15 +126,15 @@
           <use_parent_model_frame>true</use_parent_model_frame>
         </axis>
       </joint>
-
     </model>
+
+
     <model name="drone2">
-      <pose> 6.5 2 0 0 0 1.57 </pose>
+      <pose> 10 -12.5 0.2 0 0 1.57 </pose>
       <include>
         <uri>model://drone2</uri>
          <pose> 0 0 0 0 0 0 </pose>
       </include>
-
       <!-- add new camera -->
       <link name='camera'>
          <pose>.04 0 0.1 0 0.349066 0</pose>
@@ -165,7 +164,6 @@
             </script>
           </material>
         </visual>
-
         <sensor name="camera" type="camera">
          
           <camera>
@@ -182,7 +180,6 @@
           <always_on>1</always_on>
           <update_rate>10</update_rate>
           <visualize>true</visualize>
-
           <!--  <plugin name="irlock" filename="libArduCopterIRLockPlugin.so">
               <fiducial>irlock_beacon_01</fiducial>
           </plugin> -->
@@ -200,11 +197,8 @@
           <distortionT1>0.0</distortionT1>
           <distortionT2>0.0</distortionT2>
       </plugin>
-
         </sensor>
-
       </link>
-
       <!-- attach camera -->
       <joint type="fixed" name="base_camera_joint">
         <pose>0 0 0.0 0 0 0</pose>
@@ -219,7 +213,6 @@
           <use_parent_model_frame>true</use_parent_model_frame>
         </axis>
       </joint>
-
     </model>
 
   </world>
