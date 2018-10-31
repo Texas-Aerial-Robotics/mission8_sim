@@ -1,0 +1,14 @@
+ <launch>
+ <!-- stereo image proc -->
+ <!-- 	<remap from="left/image_raw" to="left/image"/>
+    <remap from="right/image_raw" to="right/image"/> -->
+    <param name="approximate_sync" value="true"/>
+    <param name="queue_size" value="10"/>
+    <node ns="camera" pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc" output="screen"></node>
+    
+    <!-- Rotate the camera frame. -->
+	<arg name="pi/2" value="1.5707963267948966" />
+	<arg name="optical_rotate" value="0 0 0 -$(arg pi/2) 0 -$(arg pi/2)" />
+	<node pkg="tf" type="static_transform_publisher" name="camera_link"
+        args="$(arg optical_rotate) base_link camera_link 100" />  
+</launch>
