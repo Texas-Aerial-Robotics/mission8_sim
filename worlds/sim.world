@@ -57,7 +57,54 @@
         </include>
         </model>
 
+    <model name="qrTopLeft">
+      <pose>1.5 10 0.1 0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>model://qrTopLeft.dae</uri></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
     
+   <!-- <model name="qrTopRight">
+      <pose>.5 .5 0 0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>model://qrTopRight.dae</uri></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qrBottomRight">
+      <pose>.5 -.5 0 0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>model://qrBottomRight.dae</uri></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qrBottomLeft">
+      <pose>-.5 -.5 0 0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>model://qrBottomLeft.dae</uri></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+-->
     <include>
       <uri>model://sun</uri>
     </include>
