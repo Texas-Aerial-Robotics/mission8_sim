@@ -28,9 +28,83 @@
         </include>
         </model>
 
+<model name="locker_bin1">
+         <include>
+<uri>model://locker_bin</uri>
+      <pose> 1 8 -1.65 1.57 0 3.14</pose>
+        </include>
+        </model>
+
+       <model name="locker_bin2">
+         <include>
+<uri>model://locker_bin</uri>
+      <pose> 5 8 -1.65 1.57 0 3.14</pose>
+        </include>
+        </model>
+
+<model name="locker_bin3">
+         <include>
+<uri>model://locker_bin</uri>
+      <pose> 9 8 -1.65 1.57 0 3.14</pose>
+        </include>
+        </model>
 
 
+<model name="locker_bin4">
+         <include>
+<uri>model://locker_bin</uri>
+      <pose> 13 8 -1.65 1.57 0 3.14</pose>
+        </include>
+        </model>
+
+    <model name="qrTopLeft">
+      <pose>1.5 10 0.1 0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>model://qrTopLeft.dae</uri></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
     
+   <!-- <model name="qrTopRight">
+      <pose>.5 .5 0 0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>model://qrTopRight.dae</uri></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qrBottomRight">
+      <pose>.5 -.5 0 0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>model://qrBottomRight.dae</uri></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="qrBottomLeft">
+      <pose>-.5 -.5 0 0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>model://qrBottomLeft.dae</uri></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+-->
     <include>
       <uri>model://sun</uri>
     </include>
