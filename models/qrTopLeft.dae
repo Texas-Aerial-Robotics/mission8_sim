@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0</authoring_tool>
     </contributor>
-    <created>2018-11-02T17:01:29</created>
-    <modified>2018-11-02T17:01:29</modified>
+    <created>2018-11-03T13:12:37</created>
+    <modified>2018-11-03T13:12:37</modified>
     <unit name="inch" meter="0.0254"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -102,21 +102,21 @@
     </light>
   </library_lights>
   <library_images>
-    <image id="qr_bottomRight_png" name="qr_bottomRight_png">
-      <init_from>qr_bottomRight.png</init_from>
+    <image id="qr_topLeft_png" name="qr_topLeft_png">
+      <init_from>qr_topLeft.png</init_from>
     </image>
   </library_images>
   <library_effects>
     <effect id="Material_001-effect">
       <profile_COMMON>
-        <newparam sid="qr_bottomRight_png-surface">
+        <newparam sid="qr_topLeft_png-surface">
           <surface type="2D">
-            <init_from>qr_bottomRight_png</init_from>
+            <init_from>qr_topLeft_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="qr_bottomRight_png-sampler">
+        <newparam sid="qr_topLeft_png-sampler">
           <sampler2D>
-            <source>qr_bottomRight_png-surface</source>
+            <source>qr_topLeft_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -128,7 +128,7 @@
               <color sid="ambient">1 1 1 1</color>
             </ambient>
             <diffuse>
-              <texture texture="qr_bottomRight_png-sampler"/>
+              <texture texture="qr_topLeft_png-sampler"/>
             </diffuse>
             <specular>
               <color sid="specular">0.5 0.5 0.5 1</color>
@@ -205,7 +205,7 @@
         <instance_light url="#Lamp-light"/>
       </node>
       <node id="Plane" name="Plane" type="NODE">
-        <matrix sid="transform">4.75 0 0 0 0 3.655 0 0 0 0 -0.9100825 0 0 0 0 1</matrix>
+        <matrix sid="transform">3.735 0 0 0 0 4.78 0 0 0 0 -0.9100825 0 0 0 0 1</matrix>
         <instance_geometry url="#Plane-mesh" name="Plane">
           <bind_material>
             <technique_common>

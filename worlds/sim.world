@@ -58,7 +58,7 @@
         </model>
 
     <model name="qrTopLeft">
-      <pose>1.5 10 0.1 0 0 0</pose>
+      <pose>1.5 10 0.05 0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -69,8 +69,8 @@
       </link>
     </model>
     
-   <!-- <model name="qrTopRight">
-      <pose>.5 .5 0 0 0 0</pose>
+   <model name="qrTopRight">
+      <pose>5.5 10 0.05 0 0 </pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -81,8 +81,8 @@
       </link>
     </model>
 
-    <model name="qrBottomRight">
-      <pose>.5 -.5 0 0 0 0</pose>
+  <model name="qrBottomRight">
+      <pose>9.5 10 0.05 0 0 </pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -94,7 +94,7 @@
     </model>
 
     <model name="qrBottomLeft">
-      <pose>-.5 -.5 0 0 0 0</pose>
+      <pose>13.5 10 0.05 0 0 </pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -103,8 +103,8 @@
           </geometry>
         </visual>
       </link>
-    </model>
--->
+    </model>-
+
     <include>
       <uri>model://sun</uri>
     </include>

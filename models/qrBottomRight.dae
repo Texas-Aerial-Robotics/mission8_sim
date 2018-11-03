@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0</authoring_tool>
     </contributor>
-    <created>2018-10-27T15:30:23</created>
-    <modified>2018-10-27T15:30:23</modified>
+    <created>2018-11-03T13:06:31</created>
+    <modified>2018-11-03T13:06:31</modified>
     <unit name="inch" meter="0.0254"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -102,21 +102,21 @@
     </light>
   </library_lights>
   <library_images>
-    <image id="qr_topRight_png" name="qr_topRight_png">
-      <init_from>qr_topRight.png</init_from>
+    <image id="qr_bottomRight_png_001" name="qr_bottomRight_png_001">
+      <init_from>qr_bottomRight.png.001.png</init_from>
     </image>
   </library_images>
   <library_effects>
     <effect id="Material_001-effect">
       <profile_COMMON>
-        <newparam sid="qr_topRight_png-surface">
+        <newparam sid="qr_bottomRight_png_001-surface">
           <surface type="2D">
-            <init_from>qr_topRight_png</init_from>
+            <init_from>qr_bottomRight_png_001</init_from>
           </surface>
         </newparam>
-        <newparam sid="qr_topRight_png-sampler">
+        <newparam sid="qr_bottomRight_png_001-sampler">
           <sampler2D>
-            <source>qr_topRight_png-surface</source>
+            <source>qr_bottomRight_png_001-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -128,7 +128,7 @@
               <color sid="ambient">1 1 1 1</color>
             </ambient>
             <diffuse>
-              <texture texture="qr_topRight_png-sampler"/>
+              <texture texture="qr_bottomRight_png_001-sampler"/>
             </diffuse>
             <specular>
               <color sid="specular">0.5 0.5 0.5 1</color>
@@ -205,7 +205,7 @@
         <instance_light url="#Lamp-light"/>
       </node>
       <node id="Plane" name="Plane" type="NODE">
-        <matrix sid="transform">0.3958333 0 0 0.9999973 0 0.3045833 0 -0.8965898 0 0 0.6744831 0.02076999 0 0 0 1</matrix>
+        <matrix sid="transform">0.31125 0 0 0.9999973 0 0.3983333 0 -0.8965898 0 0 0.6744831 0.02076999 0 0 0 1</matrix>
         <instance_geometry url="#Plane-mesh" name="Plane">
           <bind_material>
             <technique_common>
