@@ -21,6 +21,13 @@
         </include>
         </model> -->
 
+<model name="transparentbox">
+        <include>
+<uri>model://transparentbox</uri>
+      <pose> -5 4 5 1.57 0 3.14</pose>
+        </include>
+      </model>
+
 
       <model name="Lwall1">
         <include>
