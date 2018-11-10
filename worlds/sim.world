@@ -31,21 +31,21 @@
 <model name="locker_bin1">
          <include>
 <uri>model://locker_bin</uri>
-      <pose> 1 8 -1.65 1.57 0 3.14</pose>
+      <pose> 1 8 -1.7 1.57 0 3.14</pose>
         </include>
         </model>
 
        <model name="locker_bin2">
          <include>
 <uri>model://locker_bin</uri>
-      <pose> 5 8 -1.65 1.57 0 3.14</pose>
+      <pose> 5 8 -1.7 1.57 0 3.14</pose>
         </include>
         </model>
 
 <model name="locker_bin3">
          <include>
 <uri>model://locker_bin</uri>
-      <pose> 9 8 -1.65 1.57 0 3.14</pose>
+      <pose> 9 8 -1.7 1.57 0 3.14</pose>
         </include>
         </model>
 
@@ -53,7 +53,7 @@
 <model name="locker_bin4">
          <include>
 <uri>model://locker_bin</uri>
-      <pose> 13 8 -1.65 1.57 0 3.14</pose>
+      <pose> 13 8 -1.7 1.57 0 3.14</pose>
         </include>
         </model>
 
