@@ -63,7 +63,7 @@
       <link name="body">
         <visual name="visual">
           <geometry>
-            <mesh><uri>model://qrTopLeft.dae</uri></mesh>
+            <mesh><uri>model://qr/qrTopLeft.dae</uri></mesh>
           </geometry>
         </visual>
       </link>
@@ -75,7 +75,7 @@
       <link name="body">
         <visual name="visual">
           <geometry>
-            <mesh><uri>model://qrTopRight.dae</uri></mesh>
+            <mesh><uri>model://qr/qrTopRight.dae</uri></mesh>
           </geometry>
         </visual>
       </link>
@@ -87,7 +87,7 @@
       <link name="body">
         <visual name="visual">
           <geometry>
-            <mesh><uri>model://qrBottomRight.dae</uri></mesh>
+            <mesh><uri>model://qr/qrBottomRight.dae</uri></mesh>
           </geometry>
         </visual>
       </link>
@@ -99,7 +99,7 @@
       <link name="body">
         <visual name="visual">
           <geometry>
-            <mesh><uri>model://qrBottomLeft.dae</uri></mesh>
+            <mesh><uri>model://qr/qrBottomLeft.dae</uri></mesh>
           </geometry>
         </visual>
       </link>
