@@ -40,7 +40,13 @@ string vels(double speed, double turn)
 	return "Currently:\tspeed " + std::to_string(speed) + "\tturn " + std::to_string(turn) + "\n";
 }
 
-int getch() {
+char getKey(void)
+{
+	struct termios term;
+    tcgetattr(STDIN_FILENO, &term);
+    term.c_lflag &= ~ICANON;
+    tcsetattr(STDIN_FILENO, TCSANOW, &term);
+
     int ch;
     struct termios t_old, t_new;
 
@@ -52,16 +58,8 @@ int getch() {
     ch = getchar();
 
     tcsetattr(STDIN_FILENO, TCSANOW, &t_old);
-    return ch;
-}
 
-char getKey(void)
-{
-	struct termios term;
-    tcgetattr(STDIN_FILENO, &term);
-    term.c_lflag &= ~ICANON;
-    tcsetattr(STDIN_FILENO, TCSANOW, &term);
-	return (char)getch();
+	return (char)ch;
 }
 
 
