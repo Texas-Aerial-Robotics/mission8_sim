@@ -120,7 +120,6 @@ int main(int argc, char **argv)
 		cout<<vels;
 		while(1) {
 			key = getKey();
-			cout << key << endl;
 			if (moveBindings.find(key) != moveBindings.end()) {
 				for(auto elem : moveBindings) 
 					{
