@@ -55,7 +55,7 @@ int getch() {
     return ch;
 }
 
-int getKey(void)
+char getKey(void)
 {
 	struct termios term;
     tcgetattr(STDIN_FILENO, &term);
@@ -122,6 +122,7 @@ int main(int argc, char **argv)
 		cout<<vels;
 		while(1) {
 			key = getKey();
+			cout << key << endl;
 			if (moveBindings.find(key) != moveBindings.end()) {
 				for(auto elem : moveBindings) 
 					{
@@ -153,8 +154,6 @@ int main(int argc, char **argv)
 					break;
 
 			}
-
-		}
 		geometry_msgs::Twist msg;
 		msg.linear.x = x*speed;
 		msg.linear.y = y*speed;
@@ -163,6 +162,9 @@ int main(int argc, char **argv)
 		msg.angular.y = 0;
 		msg.angular.z = th*turn;
 		pub.publish(msg);
+
+		}
+
 
 	}
 	catch (int e) {
