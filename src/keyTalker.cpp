@@ -130,12 +130,12 @@ int main(int argc, char **argv)
 					th = elem.second [3];
 					}
 			}
-			else if (speedBindings.find(key) != speedBindings.end()) {
-				for(auto elem : speedBindings) 
-					{
-					speed = speed * elem.second [0];
-					turn = turn * elem.second [1];
-					}
+			else if (speedBindings.find(key) != speedBindings.end()) { 
+				
+				auto svalue = speedBindings.find(key);
+				speed = speed * svalue->second [0];
+				turn = speed * svalue->second [1];
+				
 				cout<<vels(speed,turn);
 				if (status == 14) {
 					cout << msg;;
