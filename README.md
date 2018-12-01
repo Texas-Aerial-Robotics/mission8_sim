@@ -15,3 +15,11 @@ cd ~/catkin_ws/src/mission8_sim/scripts
 ./startMultiSim.sh
 ```
 
+## Controlling Actor
+
+add the following line to the .bashrc
+
+```
+GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:/home/tar/catkin_ws/build/mission8_sim/
+```
+
