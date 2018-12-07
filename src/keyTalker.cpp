@@ -151,12 +151,12 @@ int main(int argc, char **argv)
 	init_glfw();
 
 	    
-        moveBindings[69] = {1,0,0,-1};		//'e'
-        moveBindings[81] = {1,0,0,1};		//'q'
-        moveBindings[87] = {1,0,0,0};		//'w'
-        moveBindings[65] = {0,1,0,0};		//'a'
-        moveBindings[68] = {0,-1,0,0};		//'d'
-        moveBindings[83] = {-1,0,0,0};		//'s'
+        moveBindings[69] = {0,1,0,1};		//'e'
+        moveBindings[81] = {0,1,0,-1};		//'q'
+        moveBindings[87] = {0,1,0,0};		//'w'
+        moveBindings[65] = {-1,0,0,0};		//'a'
+        moveBindings[68] = {1,0,0,0};		//'d'
+        moveBindings[83] = {0,-1,0,0};		//'s'
         moveBindings[74] = {0,0,0,-1};		//'j'
         moveBindings[76] = {0,0,0,1};		//'l'
 
