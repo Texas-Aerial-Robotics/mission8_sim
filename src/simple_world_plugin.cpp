@@ -83,6 +83,7 @@ if (!ros::isInitialized())
   ros::init(argc, argv, "gazebo_client",
       ros::init_options::NoSigintHandler);
 }
+ROS_INFO("Hello World!");
 
 // Create our ROS node. This acts in a similar manner to
 // the Gazebo node
@@ -173,9 +174,9 @@ void ActorPlugin::ChooseNewTarget()
   ignition::math::Vector3d newTarget(this->target);
   while ((newTarget - this->target).Length() < 1)
   {
-    newTarget.X(VelocityCmd.linear.x);
-    newTarget.Y(VelocityCmd.linear.y);
-
+    newTarget.X(pos.x);
+    newTarget.Y(pos.y);
+    std::cout<<pos<<std::endl;
     for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
     {
       double dist = (this->world->ModelByIndex(i)->WorldPose().Pos()
@@ -236,7 +237,7 @@ void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
   }
 
   // Normalize the direction vector, and apply the target weight
-  pos = pos.Normalize() * this->targetWeight;
+  // pos = pos.Normalize() * this->targetWeight;
 
   // Adjust the direction vector by avoiding obstacles
   this->HandleObstacles(pos);
@@ -258,8 +259,8 @@ void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
   }
 
   // Make sure the actor stays within bounds
-  pose.Pos().X(std::max(-10.0, std::min(100000000.0, pose.Pos().X())));
-  pose.Pos().Y(std::max(-10.0, std::min(100.0, pose.Pos().Y())));
+  pose.Pos().X(std::max(-10000000.0, std::min(100000000.0, pose.Pos().X())));
+  pose.Pos().Y(std::max(-10000000.0, std::min(100000000.0, pose.Pos().Y())));
   pose.Pos().Z(1.0);
 
   // Distance traveled is used to coordinate motion with the walking

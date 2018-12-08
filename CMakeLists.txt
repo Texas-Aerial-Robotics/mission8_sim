@@ -103,11 +103,11 @@ find_package(catkin REQUIRED COMPONENTS
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
-  DEPENDS 
-    roscpp 
-    gazebo_ros
-)
+# catkin_package(
+#   DEPENDS 
+#     roscpp 
+#     gazebo_ros
+# )
 
 ###########
 ## Build ##
@@ -200,7 +200,7 @@ include_directories(
 
 
 add_executable(talker src/keyTalker.cpp)
-target_link_libraries(talker ${catkin_LIBRARIES})
+target_link_libraries(talker ${catkin_LIBRARIES} glfw GLEW GLU GL)
 
 # Depend on system install of Gazebo
 find_package(gazebo REQUIRED)
@@ -210,3 +210,9 @@ include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE
 
 add_library(${PROJECT_NAME} src/simple_world_plugin.cpp)
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+
+catkin_package(
+  DEPENDS 
+    roscpp 
+    gazebo_ros
+)

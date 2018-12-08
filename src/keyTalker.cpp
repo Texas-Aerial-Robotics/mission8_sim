@@ -7,14 +7,17 @@
 #include <array>
 #include <termios.h>
 #include <unistd.h>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 using namespace std;
 
 string msg = "Reading from the keyboard  and Publishing to Twist!\n"
 		"---------------------------\n"
 		"Moving around:\n"
-		"   u    i    o\n"
-		"   j    k    l\n"
+		"   q    w    e\n"
+		"   a    s    d\n"
+/*
 		"   m    ,    .\n"
 		"For Holonomic mode (strafing), hold down the shift key:\n"
 		"---------------------------\n"
@@ -24,13 +27,90 @@ string msg = "Reading from the keyboard  and Publishing to Twist!\n"
 		"t : up (+z)\n"
 		"b : down (-z)\n"
 		"anything else : stop\n"
-		"q/z : increase/decrease max speeds by 10%\n"
-		"w/x : increase/decrease only linear speed by 10%\n"
-		"e/c : increase/decrease only angular speed by 10%\n"
-		"1 to quit\n";
+*/
+		"u/m : increase/decrease max speeds by 10%\n"
+		"i/, : increase/decrease only linear speed by 10%\n"
+		"o/. : increase/decrease only angular speed by 10%\n"
+		"ESC to quit\n";
 
+double speed, turn, x, y, z, th;
+int status;
 
+std::map<int, array<double, 4>> moveBindings;
 
+std::map<int, array<double, 2>> speedBindings;
+
+ros::Publisher pub;
+
+string vels(double speed, double turn);
+
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, GLFW_TRUE);
+    else if (action == GLFW_PRESS) {
+
+    	// checks if key is movement key
+    	if (moveBindings.find(key) != moveBindings.end()) {
+			
+			auto elem = moveBindings.find(key);
+			x = elem->second [0];
+			y = elem->second [1];
+			z = elem->second [2];
+			th = elem->second [3];
+			
+			}
+		// checks if key adjusts speed
+		else if (speedBindings.find(key) != speedBindings.end()) { 
+				
+			auto svalue = speedBindings.find(key);
+			speed = speed * (float)svalue->second [0];
+			turn = turn * (float)svalue->second [1];
+			
+			cout<<vels(speed,turn);
+			if (status == 14) {
+				cout << msg;;
+
+			}
+			status = (status + 1) % 15;
+			}
+		}
+	else if (action == GLFW_RELEASE) {
+		x = 0;
+		y = 0;
+		z = 0;
+		th = 0;
+		}
+	
+	// publishes twist
+	geometry_msgs::Twist msg;
+	msg.linear.x = x*speed;
+	msg.linear.y = y*speed;
+	msg.linear.z = z*speed;
+	msg.angular.x = 0;
+	msg.angular.y = 0;
+	msg.angular.z = th*turn;
+	pub.publish(msg);
+
+}
+
+GLFWwindow* window;
+
+void init_glfw(){
+	    if (!glfwInit())
+        exit(EXIT_FAILURE);
+        window = glfwCreateWindow(640, 480, "Complicated example", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        exit(EXIT_FAILURE);
+    }
+    glfwSetKeyCallback(window, key_callback);
+    glfwMakeContextCurrent(window);
+    glewInit();
+    glfwSwapInterval(1);
+
+}
 
 
 
@@ -39,6 +119,8 @@ string vels(double speed, double turn)
 {
 	return "Currently:\tspeed " + std::to_string(speed) + "\tturn " + std::to_string(turn) + "\n";
 }
+
+
 
 char getKey(void)
 {
@@ -65,45 +147,33 @@ char getKey(void)
 
 int main(int argc, char **argv)
 {
-	double speed, turn, x, y, z, th;
-	int status;
-	char key;
+	init_glfw();
 
-	std::map<char, array<double, 4>> moveBindings;
 	    
-	    moveBindings['i'] = {1,0,0,0};
-        moveBindings['o'] = {1,0,0,-1};
-        moveBindings['j'] = {0,0,0,1};
-        moveBindings['l'] = {0,0,0,-1};
-        moveBindings['u'] = {1,0,0,1};
-        moveBindings[','] = {-1,0,0,0};
-        moveBindings['.'] = {-1,0,0,1};
-        moveBindings['m'] = {-1,0,0,-1};
-        moveBindings['O'] = {1,-1,0,0};
-        moveBindings['I'] = {1,0,0,0};
-        moveBindings['J'] = {0,1,0,0};
-        moveBindings['L'] = {0,-1,0,0};
-        moveBindings['U'] = {1,1,0,0};
-        moveBindings['<'] = {-1,0,0,0};
-        moveBindings['>'] = {-1,-1,0,0};
-        moveBindings['M'] = {-1,1,0,0};
-        moveBindings['t'] = {0,0,1,0};
-        moveBindings['b'] = {0,0,-1,0};
+        moveBindings[69] = {0,1,0,1};		//'e'
+        moveBindings[81] = {0,1,0,-1};		//'q'
+        moveBindings[87] = {0,1,0,0};		//'w'
+        moveBindings[65] = {-1,0,0,0};		//'a'
+        moveBindings[68] = {1,0,0,0};		//'d'
+        moveBindings[83] = {0,-1,0,0};		//'s'
+        moveBindings[74] = {0,0,0,-1};		//'j'
+        moveBindings[76] = {0,0,0,1};		//'l'
 
-    std::map<char, array<double, 2>> speedBindings;
+
+
         
-        speedBindings['q'] = {1.1,1.1};
-        speedBindings['z'] = {.9,.9};
-        speedBindings['w'] = {1.1,1};
-        speedBindings['x'] = {.9,1};
-        speedBindings['e'] = {1,1.1};
-        speedBindings['c'] = {1,.9};
+        speedBindings[85] = {1.1,1.1};	 	//'u'
+        speedBindings[77] = {.9,.9};		//'m'
+        speedBindings[73] = {1.1,1};		//'i'
+        speedBindings[44] = {.9,1};			//','
+        speedBindings[79] = {1,1.1};		//'o'
+        speedBindings[46] = {1,.9};			//'.'
 
 	ros::init(argc, argv, "keyTalker");
 	
 	ros::NodeHandle nh;
 	
-	ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("set_model_state", 100);
+	pub = nh.advertise<geometry_msgs::Twist>("set_model_state", 100);
 
 	nh.param("speed", speed, 0.5);
 	nh.param("turn", turn, 1.0);
@@ -118,6 +188,12 @@ int main(int argc, char **argv)
 	try {
 		cout<<msg;
 		cout<<vels;
+		while (!glfwWindowShouldClose(window))
+    	{
+    		glfwSwapBuffers(window);
+        	glfwPollEvents();
+		}
+		/*
 		while(1) {
 			key = getKey();
 			if (moveBindings.find(key) != moveBindings.end()) {
@@ -132,13 +208,12 @@ int main(int argc, char **argv)
 			else if (speedBindings.find(key) != speedBindings.end()) { 
 				
 				auto svalue = speedBindings.find(key);
-				speed = speed * svalue->second [0];
-				turn = speed * svalue->second [1];
+				speed = speed * (float)svalue->second [0];
+				turn = turn * (float)svalue->second [1];
 				
 				cout<<vels(speed,turn);
 				if (status == 14) {
 					cout << msg;;
-
 				}
 				status = (status + 1) % 15;
 			}
@@ -149,7 +224,6 @@ int main(int argc, char **argv)
 				th = 0;
 				if (key == '1')
 					break;
-
 			}
 		geometry_msgs::Twist msg;
 		msg.linear.x = x*speed;
@@ -159,9 +233,8 @@ int main(int argc, char **argv)
 		msg.angular.y = 0;
 		msg.angular.z = th*turn;
 		pub.publish(msg);
-
 		}
-
+	*/
 
 	}
 	catch (int e) {
@@ -178,4 +251,3 @@ int main(int argc, char **argv)
 
 	return 0;
 }
-

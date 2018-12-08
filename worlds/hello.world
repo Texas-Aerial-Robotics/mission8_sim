@@ -19,7 +19,7 @@
         <scale>1.000000</scale>
         <interpolate_x>true</interpolate_x>
       </animation>
-      <plugin name="actor2_plugin" filename="libgazebo_tutorials.so">
+      <plugin name="actor2_plugin" filename="libmission8_sim.so">
         <!-- <target>2 -13 0</target> -->
         <target_weight>1.15</target_weight>
         <obstacle_weight>1.8</obstacle_weight>
