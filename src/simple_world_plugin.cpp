@@ -123,7 +123,7 @@ this->rosQueueThread =
   if (_sdf->HasElement("animation_factor"))
     this->animationFactor = _sdf->Get<double>("animation_factor");
   else
-    this->animationFactor = 4.5;
+    this->animationFactor = 1.0;
 
   // Add our own name to models we should ignore when avoiding obstacles.
   this->ignoreModels.push_back(this->actor->GetName());
@@ -172,11 +172,11 @@ void ActorPlugin::Reset()
 void ActorPlugin::ChooseNewTarget()
 {
   ignition::math::Vector3d newTarget(this->target);
-  while ((newTarget - this->target).Length() < 1)
-  {
-    newTarget.X(pos.x);
-    newTarget.Y(pos.y);
-    std::cout<<pos<<std::endl;
+  // while ((newTarget - this->target).Length() < 1)
+  // {
+    newTarget.X(pos_g.x);
+    newTarget.Y(pos_g.y);
+    //std::cout<<pos<<std::endl;
     for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
     {
       double dist = (this->world->ModelByIndex(i)->WorldPose().Pos()
@@ -187,7 +187,7 @@ void ActorPlugin::ChooseNewTarget()
         break;
       }
     }
-  }
+  //}
   this->target = newTarget;
 }
 
@@ -230,11 +230,18 @@ void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
   // Choose a new target position if the actor has reached its current
   // target.
   //std::cout << distance << std::endl;
-  if (distance < 1.3)
-  {
-    this->ChooseNewTarget();
-    pos = this->target - pose.Pos();
-  }
+  // if (distance < 1.3)
+  // {
+  //   this->ChooseNewTarget();
+  //   pos = this->target - pose.Pos();
+  // }
+  ignition::math::Vector3d newTarget(this->target);
+  // while ((newTarget - this->target).Length() < 1)
+  // {
+  newTarget.X(pos_g.x);
+  newTarget.Y(pos_g.y);
+  std::cout<<pos_g<<std::endl;
+  this->target = newTarget;
 
   // Normalize the direction vector, and apply the target weight
   // pos = pos.Normalize() * this->targetWeight;
@@ -250,7 +257,7 @@ void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
   if (std::abs(yaw.Radian()) > IGN_DTOR(10))
   {
     pose.Rot() = ignition::math::Quaterniond(1.5707, 0, rpy.Z()+
-        yaw.Radian()*0.001);
+        yaw.Radian()*0.1);
   }
   else
   {
