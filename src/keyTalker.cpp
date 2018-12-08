@@ -34,6 +34,86 @@ string msg = "Reading from the keyboard  and Publishing to Twist!\n"
 		"o/. : increase/decrease only angular speed by 10%\n"
 		"ESC to quit\n";
 
+
+double speed, turn, x, y, z, th;
+int status;
+
+std::map<int, array<double, 4>> moveBindings;
+
+std::map<int, array<double, 2>> speedBindings;
+
+ros::Publisher pub;
+
+string vels(double speed, double turn);
+
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, GLFW_TRUE);
+    else if (action == GLFW_PRESS) {
+
+    	// checks if key is movement key
+    	if (moveBindings.find(key) != moveBindings.end()) {
+			
+			auto elem = moveBindings.find(key);
+			x = elem->second [0];
+			y = elem->second [1];
+			z = elem->second [2];
+			th = elem->second [3];
+			
+			}
+		// checks if key adjusts speed
+		else if (speedBindings.find(key) != speedBindings.end()) { 
+				
+			auto svalue = speedBindings.find(key);
+			speed = speed * (float)svalue->second [0];
+			turn = turn * (float)svalue->second [1];
+			
+			cout<<vels(speed,turn);
+			if (status == 14) {
+				cout << msg;;
+
+			}
+			status = (status + 1) % 15;
+			}
+		}
+	else if (action == GLFW_RELEASE) {
+		x = 0;
+		y = 0;
+		z = 0;
+		th = 0;
+		}
+	
+	// publishes twist
+	geometry_msgs::Twist msg;
+	msg.linear.x = x*speed;
+	msg.linear.y = y*speed;
+	msg.linear.z = z*speed;
+	msg.angular.x = 0;
+	msg.angular.y = 0;
+	msg.angular.z = th*turn;
+	pub.publish(msg);
+
+}
+
+GLFWwindow* window;
+
+void init_glfw(){
+	    if (!glfwInit())
+        exit(EXIT_FAILURE);
+        window = glfwCreateWindow(640, 480, "Complicated example", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        exit(EXIT_FAILURE);
+    }
+    glfwSetKeyCallback(window, key_callback);
+    glfwMakeContextCurrent(window);
+    glewInit();
+    glfwSwapInterval(1);
+
+=======
+
 double speed, turn, x, y, z, th;
 int status;
 
@@ -139,6 +219,7 @@ void init_glfw(){
     glewInit();
     glfwSwapInterval(1);
 
+
 }
 
 
@@ -150,7 +231,9 @@ string vels(double speed, double turn)
 }
 
 
+
 /*
+
 char getKey(void)
 {
 	struct termios term;
@@ -243,7 +326,6 @@ int main(int argc, char **argv)
 				cout<<vels(speed,turn);
 				if (status == 14) {
 					cout << msg;;
-
 				}
 				status = (status + 1) % 15;
 			}
@@ -254,7 +336,6 @@ int main(int argc, char **argv)
 				th = 0;
 				if (key == '1')
 					break;
-
 			}
 		geometry_msgs::Twist msg;
 		msg.linear.x = x*speed;
@@ -264,7 +345,6 @@ int main(int argc, char **argv)
 		msg.angular.y = 0;
 		msg.angular.z = th*turn;
 		pub.publish(msg);
-
 		}
 	*/
 
@@ -283,4 +363,3 @@ int main(int argc, char **argv)
 
 	return 0;
 }
-
