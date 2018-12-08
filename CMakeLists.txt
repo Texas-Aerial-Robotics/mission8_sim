@@ -199,7 +199,9 @@ include_directories(
 # catkin_add_nosetests(test)
 
 
+
 add_executable(talker src/keyTalker.cpp)
+
 target_link_libraries(talker ${catkin_LIBRARIES} glfw GLEW GLU GL)
 
 # Depend on system install of Gazebo
@@ -216,3 +218,4 @@ catkin_package(
     roscpp 
     gazebo_ros
 )
+
