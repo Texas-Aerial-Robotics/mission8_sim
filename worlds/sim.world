@@ -282,6 +282,25 @@
       </joint>
     </model>
 
+    <actor name="actor2">
+      <pose>5 5 1 0 0 0</pose>
+      <skin>
+        <filename>walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <plugin name="actor2_plugin" filename="libmission8_sim.so">
+        <!-- <target>2 -13 0</target> -->
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>1.1</animation_factor>
+      </plugin>
+    </actor>
+
   </world>
 </sdf>
 

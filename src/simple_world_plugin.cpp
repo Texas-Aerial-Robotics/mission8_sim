@@ -114,10 +114,10 @@ this->rosQueueThread =
     this->targetWeight = 1.0;
 
   // Read in the obstacle weight
-  if (_sdf->HasElement("obstacle_weight"))
-    this->obstacleWeight = _sdf->Get<double>("obstacle_weight");
-  else
-    this->obstacleWeight = 1.0;
+  // if (_sdf->HasElement("obstacle_weight"))
+  //   this->obstacleWeight = _sdf->Get<double>("obstacle_weight");
+  // else
+  //   this->obstacleWeight = 1.0;
 
   // Read in the animation factor (applied in the OnUpdate function).
   if (_sdf->HasElement("animation_factor"))
@@ -126,19 +126,19 @@ this->rosQueueThread =
     this->animationFactor = 1.0;
 
   // Add our own name to models we should ignore when avoiding obstacles.
-  this->ignoreModels.push_back(this->actor->GetName());
+  // this->ignoreModels.push_back(this->actor->GetName());
 
-  // Read in the other obstacles to ignore
-  if (_sdf->HasElement("ignore_obstacles"))
-  {
-    sdf::ElementPtr modelElem =
-      _sdf->GetElement("ignore_obstacles")->GetElement("model");
-    while (modelElem)
-    {
-      this->ignoreModels.push_back(modelElem->Get<std::string>());
-      modelElem = modelElem->GetNextElement("model");
-    }
-  }
+  // // Read in the other obstacles to ignore
+  // if (_sdf->HasElement("ignore_obstacles"))
+  // {
+  //   sdf::ElementPtr modelElem =
+  //     _sdf->GetElement("ignore_obstacles")->GetElement("model");
+  //   while (modelElem)
+  //   {
+  //     this->ignoreModels.push_back(modelElem->Get<std::string>());
+  //     modelElem = modelElem->GetNextElement("model");
+  //   }
+  // }
 }
 
 /////////////////////////////////////////////////
@@ -150,7 +150,7 @@ void ActorPlugin::Reset()
   if (this->sdf && this->sdf->HasElement("target"))
     this->target = this->sdf->Get<ignition::math::Vector3d>("target");
   else
-    this->target = ignition::math::Vector3d(2, 5, 0);
+    this->target = ignition::math::Vector3d(5, 5, 0);
 
   auto skelAnims = this->actor->SkeletonAnimations();
   if (skelAnims.find(WALKING_ANIMATION) == skelAnims.end())
@@ -192,27 +192,27 @@ void ActorPlugin::ChooseNewTarget()
 }
 
 /////////////////////////////////////////////////
-void ActorPlugin::HandleObstacles(ignition::math::Vector3d &_pos)
-{
-  for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
-  {
-    physics::ModelPtr model = this->world->ModelByIndex(i);
-    if (std::find(this->ignoreModels.begin(), this->ignoreModels.end(),
-          model->GetName()) == this->ignoreModels.end())
-    {
-      ignition::math::Vector3d offset = model->WorldPose().Pos() -
-        this->actor->WorldPose().Pos();
-      double modelDist = offset.Length();
-      if (modelDist < 4.0)
-      {
-        double invModelDist = this->obstacleWeight / modelDist;
-        offset.Normalize();
-        offset *= invModelDist;
-        _pos -= offset;
-      }
-    }
-  }
-}
+// void ActorPlugin::HandleObstacles(ignition::math::Vector3d &_pos)
+// {
+//   for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
+//   {
+//     physics::ModelPtr model = this->world->ModelByIndex(i);
+//     if (std::find(this->ignoreModels.begin(), this->ignoreModels.end(),
+//           model->GetName()) == this->ignoreModels.end())
+//     {
+//       ignition::math::Vector3d offset = model->WorldPose().Pos() -
+//         this->actor->WorldPose().Pos();
+//       double modelDist = offset.Length();
+//       if (modelDist < 4.0)
+//       {
+//         double invModelDist = this->obstacleWeight / modelDist;
+//         offset.Normalize();
+//         offset *= invModelDist;
+//         _pos -= offset;
+//       }
+//     }
+//   }
+// }
 
 /////////////////////////////////////////////////
 void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
@@ -243,11 +243,11 @@ void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
   std::cout<<pos_g<<std::endl;
   this->target = newTarget;
 
-  // Normalize the direction vector, and apply the target weight
-  // pos = pos.Normalize() * this->targetWeight;
+  //Normalize the direction vector, and apply the target weight
+  pos = pos.Normalize() * this->targetWeight;
 
   // Adjust the direction vector by avoiding obstacles
-  this->HandleObstacles(pos);
+  //this->HandleObstacles(pos);
 
   // Compute the yaw orientation
   ignition::math::Angle yaw = atan2(pos.Y(), pos.X()) + 1.5707 - rpy.Z();
