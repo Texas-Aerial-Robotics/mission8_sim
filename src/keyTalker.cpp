@@ -75,13 +75,41 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 			}
 			status = (status + 1) % 15;
 			}
-		}
-	else if (action == GLFW_RELEASE) {
+	}
+	else if (action == GLFW_REPEAT) {
+
+
+    	// checks if key is movement key
+    	if (moveBindings.find(key) != moveBindings.end()) {
+			
+			auto elem = moveBindings.find(key);
+			x = elem->second [0];
+			y = elem->second [1];
+			z = elem->second [2];
+			th = elem->second [3];
+			
+			}
+		// checks if key adjusts speed
+		else if (speedBindings.find(key) != speedBindings.end()) { 
+				
+			auto svalue = speedBindings.find(key);
+			speed = speed * (float)svalue->second [0];
+			turn = turn * (float)svalue->second [1];
+			
+			cout<<vels(speed,turn);
+			if (status == 14) {
+				cout << msg;;
+
+			}
+			status = (status + 1) % 15;
+			}
+	}
+	else {
 		x = 0;
 		y = 0;
 		z = 0;
 		th = 0;
-		}
+	}
 	
 	// publishes twist
 	geometry_msgs::Twist msg;
@@ -122,7 +150,7 @@ string vels(double speed, double turn)
 }
 
 
-
+/*
 char getKey(void)
 {
 	struct termios term;
@@ -144,7 +172,7 @@ char getKey(void)
 
 	return (char)ch;
 }
-
+*/
 
 int main(int argc, char **argv)
 {
