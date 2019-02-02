@@ -39,6 +39,7 @@ rosrun mission8_sim talker
 ## Files
 
 hello.launch - launches the empty world with the actor
+
 sim.launch - launches the arena with the actor (works really slowly)
 
 sim.world - Gazebo world with the actor
