@@ -43,8 +43,11 @@ hello.launch - launches the empty world with the actor
 sim.launch - launches the arena with the actor (works really slowly)
 
 sim.world - Gazebo world with the actor
+
 hello.world - Gazebo world with just the actor
 
 dalekControl.cpp - the plugin for the subscriber
+
 keyTalker.cpp - the plugin for the keyboard controls
+
 simple_world_plugin.cpp - the plugin for the actor simulation
