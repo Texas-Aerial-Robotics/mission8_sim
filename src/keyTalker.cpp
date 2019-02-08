@@ -17,6 +17,7 @@ string msg = "Reading from the keyboard  and Publishing to Twist!\n"
 		"Moving around:\n"
 		"   q    w    e\n"
 		"   a    s    d\n"
+		" "
 /*
 		"   m    ,    .\n"
 		"For Holonomic mode (strafing), hold down the shift key:\n"
