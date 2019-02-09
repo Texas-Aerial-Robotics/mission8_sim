@@ -51,10 +51,17 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GLFW_TRUE);
+    // if key pressed, iterates through list of valid keys
     else if (action == GLFW_PRESS) {
 
+    	if key == GLFW_KEY_SPACE {
+    		z = 1;
+    	}
+    	else if key == GLFW_KEY_LEFT_CONTROL{
+    		z = -1;
+    	}
     	// checks if key is movement key
-    	if (moveBindings.find(key) != moveBindings.end()) {
+    	else if (moveBindings.find(key) != moveBindings.end()) {
 			
 			auto elem = moveBindings.find(key);
 			x = elem->second [0];
@@ -78,6 +85,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 			status = (status + 1) % 15;
 			}
 	}
+	// if key is repeated, same process is performed
 	else if (action == GLFW_REPEAT) {
 
 
@@ -117,7 +125,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 	geometry_msgs::Twist msg;
 	msg.linear.x = x*speed;
 	msg.linear.y = y*speed;
-	msg.linear.z = z*speed;
+	msg.linear.z = z;
 	msg.angular.x = 0;
 	msg.angular.y = 0;
 	msg.angular.z = th*turn;
