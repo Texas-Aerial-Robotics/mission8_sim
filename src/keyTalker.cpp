@@ -54,10 +54,10 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
     // if key pressed, iterates through list of valid keys
     else if (action == GLFW_PRESS) {
 
-    	if key == GLFW_KEY_SPACE {
+    	if (key == GLFW_KEY_SPACE) {
     		z = 1;
     	}
-    	else if key == GLFW_KEY_LEFT_CONTROL{
+    	else if (key == GLFW_KEY_LEFT_CONTROL){
     		z = -1;
     	}
     	// checks if key is movement key
