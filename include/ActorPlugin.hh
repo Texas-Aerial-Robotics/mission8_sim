@@ -40,7 +40,7 @@ namespace gazebo
   class GAZEBO_VISIBLE ActorPlugin : public ModelPlugin
   {
     geometry_msgs::Twist VelocityCmd;
-    geometry_msgs::Point pos;
+    geometry_msgs::Point pos_g;
     /// \brief Constructor
     public: ActorPlugin();
 
@@ -121,8 +121,8 @@ namespace gazebo
     {
         //std::cout<<*_msg<<std::endl;
         VelocityCmd = *_msg;
-        pos.x = VelocityCmd.linear.x + pos.x;
-        pos.y = VelocityCmd.linear.y + pos.y;
+        pos_g.x = 0.01*VelocityCmd.linear.x + pos_g.x;
+        pos_g.y = 0.01*VelocityCmd.linear.y + pos_g.y;
     }
 
     /// \brief ROS helper function that processes messages
