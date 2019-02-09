@@ -5,7 +5,7 @@
 
 #include <ignition/math.hh>
 #include "gazebo/physics/physics.hh"
-#include "gazebo/plugins/ActorPlugin.hh"  
+#include "ActorPluginMod.hh"  
 
 #include "ros/callback_queue.h"
 #include "ros/subscribe_options.h"
