@@ -34,7 +34,7 @@ public:
 	void handle(void);
 } input;
 
-Input::keys(GLFWwindow *win, int key, int scancode, int action, int mods){
+void Input::keys(GLFWwindow *win, int key, int scancode, int action, int mods){
 	if (key == GLFW_UNKNOWN) return;
 	if (action == GLFW_PRESS)
 		pressed[key] = true;
@@ -167,16 +167,21 @@ int main(int argc, char **argv)
 	y = 0;
 	z = 0;
 	status = 0;
+	int counter = 0;
 
 	try {
 		cout<<msg;
 		cout<<vels;
-		ros::Rate r(10); // 10 hz
+		ros::Rate r(50); // 10 hz
 		while (!glfwWindowShouldClose(window))
     	{
     		glfwSwapBuffers(window);
         	glfwPollEvents();
-        	Input::handle();
+        	if (counter % 10 == 0):{
+        		input::handle();
+        		counter = 0;
+        	}
+        	counter++;
         	r.sleep();
 		}
 	}
