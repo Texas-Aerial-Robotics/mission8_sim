@@ -10,9 +10,12 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+using std::cout;
+using std::cin;
 using namespace std;
 
-string msg = "Reading from the keyboard  and Publishing to Twist!\n"
+std::string msg = "Reading from the keyboard  and Publishing to Twist!\n"
+		"Hello friend. Do you want to play a game?"
 		"---------------------------\n"
 		"Moving around:\n"
 		"   q    w    e\n"
@@ -20,22 +23,21 @@ string msg = "Reading from the keyboard  and Publishing to Twist!\n"
 		"u/m : increase/decrease max speeds by 10%\n"
 		"ESC to quit\n";
 
+const int KEYS = 349;
 bool pressed[KEYS];
-int KEYS = 349;
 
 class Input {
-	GLFWwindow window;
+	GLFWwindow *window;
 	int key;
 	int scancode;
 	int action;
 	int mods;
 public:
 	void keys(GLFWwindow *win, int key, int scancode, int action, int mods);
-	void handle(void);
-} input;
+};
 
 void Input::keys(GLFWwindow *win, int key, int scancode, int action, int mods){
-	if (key == GLFW_UNKNOWN) return;
+	if (key == GLFW_KEY_UNKNOWN) return;
 	if (action == GLFW_PRESS)
 		pressed[key] = true;
 	else if (action == GLFW_RELEASE)
@@ -46,8 +48,16 @@ void Input::keys(GLFWwindow *win, int key, int scancode, int action, int mods){
 			glfwSetWindowShouldClose(win, true);
 	}
 }
+double speed, turn, x, y, z, th;
+int status;
+ros::Publisher pub;
 
-void Input::handle(void){
+string vels(double speed)
+{
+	return "Currently:\tspeed " + std::to_string(speed) + '\n';
+}
+
+void inputHandle(void){
 	for(int i = 0; i < KEYS; i++){
 		if(!pressed[i]) continue;
 		switch(i){
@@ -109,20 +119,16 @@ void Input::handle(void){
 	}
 }
 
-double speed, turn, x, y, z;
-int status;
 
 std::map<int, array<double, 4>> moveBindings;
 
 std::map<int, array<double, 2>> speedBindings;
-
-ros::Publisher pub;
-
-string vels(double speed);
+Input *input;
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	input->keys(window, key,scancode,action,mods)
+	input = (Input*)glfwGetWindowUserPointer(window);
+	input->keys(window, key,scancode,action,mods);
 }
 
 GLFWwindow* window;
@@ -144,16 +150,11 @@ void init_glfw(){
 
 }
 
-string vels(double speed)
-{
-	return "Currently:\tspeed " + std::to_string(speed) + '\n';
-}
-
 int main(int argc, char **argv)
 {
 	init_glfw();
 
-	ros::init(argc, argv, "keyTalker");
+	ros::init(argc, argv, "testKeyTalker");
 	
 	ros::NodeHandle nh;
 	
@@ -177,8 +178,8 @@ int main(int argc, char **argv)
     	{
     		glfwSwapBuffers(window);
         	glfwPollEvents();
-        	if (counter % 10 == 0):{
-        		input::handle();
+        	if (counter % 10 == 0){
+        		inputHandle();
         		counter = 0;
         	}
         	counter++;
