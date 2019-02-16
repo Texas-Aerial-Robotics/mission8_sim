@@ -10,8 +10,6 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-using std::cout;
-using std::cin;
 using namespace std;
 
 std::string msg = "Reading from the keyboard  and Publishing to Twist!\n"
@@ -23,11 +21,12 @@ std::string msg = "Reading from the keyboard  and Publishing to Twist!\n"
 		"u/m : increase/decrease max speeds by 10%\n"
 		"ESC to quit\n";
 
+// initializes list of boolean states of keyboard keys
 const int KEYS = 349;
 bool pressed[KEYS];
 
+// input class to store all input received from glfw
 class Input {
-	GLFWwindow *window;
 	int key;
 	int scancode;
 	int action;
@@ -35,7 +34,7 @@ class Input {
 public:
 	void keys(GLFWwindow *win, int key, int scancode, int action, int mods);
 };
-
+// method to pass received input into boolean states
 void Input::keys(GLFWwindow *win, int key, int scancode, int action, int mods){
 	if (key == GLFW_KEY_UNKNOWN) return;
 	if (action == GLFW_PRESS)
@@ -56,7 +55,8 @@ string vels(double speed)
 {
 	return "Currently:\tspeed " + std::to_string(speed) + '\n';
 }
-
+// iterates through list and changes stored velocity depending on boolean state
+// also supports changing speed size
 void inputHandle(void){
 	for(int i = 0; i < KEYS; i++){
 		if(!pressed[i]) continue;
@@ -119,16 +119,12 @@ void inputHandle(void){
 	}
 }
 
+Input input;
 
-std::map<int, array<double, 4>> moveBindings;
-
-std::map<int, array<double, 2>> speedBindings;
-Input *input;
-
+// glfw function that gets input and passes to Input class
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	input = (Input*)glfwGetWindowUserPointer(window);
-	input->keys(window, key,scancode,action,mods);
+	input.keys(window, key,scancode,action,mods);
 }
 
 GLFWwindow* window;
@@ -154,7 +150,7 @@ int main(int argc, char **argv)
 {
 	init_glfw();
 
-	ros::init(argc, argv, "testKeyTalker");
+	ros::init(argc, argv, "Inner Voice");
 	
 	ros::NodeHandle nh;
 	
