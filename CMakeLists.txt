@@ -203,6 +203,8 @@ include_directories(
 
 add_executable(talker src/keyTalker.cpp)
 
+add_executable(testTalker src/testKeyTalker.cpp)
+
 target_link_libraries(talker ${catkin_LIBRARIES} glfw GLEW GLU GL)
 
 # Depend on system install of Gazebo
