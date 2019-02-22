@@ -200,20 +200,21 @@ include_directories(
 # catkin_add_nosetests(test)
 
 
+find_package(gazebo REQUIRED)
+find_package(OpenGL REQUIRED)
+find_package(GLEW REQUIRED)
+add_executable(oldtalker src/keyTalker.cpp)
+#add_executable(InnerVoice src/testKeyTalker.cpp)
 
-add_executable(old_talker src/keyTalker.cpp)
+target_link_libraries(oldtalker ${catkin_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
 
-add_executable(Inner_Voice src/testKeyTalker.cpp)
-
-target_link_libraries(old_talker ${catkin_LIBRARIES} glfw GLEW GLU GL)
-
-target_link_libraries(Inner_Voice ${catkin_LIBRARIES} glfw GLEW GLU GL)
+#target_link_libraries(InnerVoice ${catkin_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
 
 # Depend on system install of Gazebo
-find_package(gazebo REQUIRED)
 
 link_directories(${GAZEBO_LIBRARY_DIRS})
 include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
+include_directories(${OPENGL_INCLUDE_DIR} ${GLEW_INLCLUDE_DIR})
 
 add_library(${PROJECT_NAME} src/simple_world_plugin.cpp)
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
