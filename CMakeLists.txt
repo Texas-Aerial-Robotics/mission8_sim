@@ -206,7 +206,7 @@ find_package(GLEW REQUIRED)
 add_executable(oldtalker src/keyTalker.cpp)
 #add_executable(InnerVoice src/testKeyTalker.cpp)
 
-target_link_libraries(oldtalker ${catkin_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+target_link_libraries(oldtalker ${catkin_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} glfw)
 
 #target_link_libraries(InnerVoice ${catkin_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
 
