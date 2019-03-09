@@ -150,7 +150,7 @@ int main(int argc, char **argv)
 {
 	init_glfw();
 
-	ros::init(argc, argv, "Inner Voice");
+	ros::init(argc, argv, "InnerVoice");
 	
 	ros::NodeHandle nh;
 	

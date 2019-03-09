@@ -7,12 +7,7 @@ project(mission8_sim)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-  std_msgs
-  gazebo_ros 
-)
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -198,30 +193,32 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  rospy
+  std_msgs
+  gazebo_ros 
+)
+catkin_package(
+  INCLUDE_DIRS include
+  LIBRARIES ${PROJECT_NAME}
+  CATKIN_DEPENDS roscpp std_msgs rospy gazebo_ros
+  DEPENDS Boost
+)
 
 find_package(gazebo REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
-add_executable(oldtalker src/keyTalker.cpp)
-#add_executable(InnerVoice src/testKeyTalker.cpp)
+add_executable(InnerVoice src/testKeyTalker.cpp)
 
-target_link_libraries(oldtalker ${catkin_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} glfw)
+#target_link_libraries(oldtalker ${catkin_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} glfw)
 
-#target_link_libraries(InnerVoice ${catkin_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+target_link_libraries(InnerVoice ${catkin_LIBRARIES} glfw GLEW GLU GL)
 
-# Depend on system install of Gazebo
+# \Depend on system install of Gazebo
 
 link_directories(${GAZEBO_LIBRARY_DIRS})
 include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
 include_directories(${OPENGL_INCLUDE_DIR} ${GLEW_INLCLUDE_DIR})
 
-add_library(${PROJECT_NAME} src/simple_world_plugin.cpp)
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
-
-catkin_package(
-  DEPENDS 
-    roscpp 
-    gazebo_ros
-)
 
