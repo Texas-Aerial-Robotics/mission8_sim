@@ -195,14 +195,14 @@ void ActorPlugin::OnUpdate(const common::UpdateInfo &_info)
   // Make sure the actor stays within bounds
   pose.Pos().X(std::max(-3.0, std::min(3.5, pose.Pos().X())));
   pose.Pos().Y(std::max(-10.0, std::min(2.0, pose.Pos().Y())));
-  pose.Pos().Z(1.2138);
+  pose.Pos().Z(1.0);
 
   // Distance traveled is used to coordinate motion with the walking
   // animation
   double distanceTraveled = (pose.Pos() -
       this->actor->WorldPose().Pos()).Length();
-
-  this->actor->SetWorldPose(pose, false, false);
+  ignition::math::Pose3d setpose=( 1 0 0 0 0 0);
+  this->actor->SetWorldPose(, true, true);
   this->actor->SetScriptTime(this->actor->ScriptTime() +
     (distanceTraveled * this->animationFactor));
   this->lastUpdate = _info.simTime;

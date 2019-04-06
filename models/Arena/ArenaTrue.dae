@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.79.0</authoring_tool>
+    </contributor>
+    <created>2019-04-05T18:17:20</created>
+    <modified>2019-04-05T18:17:20</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images>
+    <image id="wall_mat_jpg" name="wall_mat_jpg">
+      <init_from>wall_mat.jpg</init_from>
+    </image>
+    <image id="Floor_texture_png" name="Floor_texture_png">
+      <init_from>Floor_texture.png</init_from>
+    </image>
+  </library_images>
+  <library_effects>
+    <effect id="Material_002-effect">
+      <profile_COMMON>
+        <newparam sid="wall_mat_jpg-surface">
+          <surface type="2D">
+            <init_from>wall_mat_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="wall_mat_jpg-sampler">
+          <sampler2D>
+            <source>wall_mat_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">1 1 1 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="wall_mat_jpg-sampler"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Material_003-effect">
+      <profile_COMMON>
+        <newparam sid="Floor_texture_png-surface">
+          <surface type="2D">
+            <init_from>Floor_texture_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="Floor_texture_png-sampler">
+          <sampler2D>
+            <source>Floor_texture_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">1 1 1 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Floor_texture_png-sampler"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="Material_002-material" name="Material_002">
+      <instance_effect url="#Material_002-effect"/>
+    </material>
+    <material id="Material_003-material" name="Material_003">
+      <instance_effect url="#Material_003-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="ARENA-mesh" name="ARENA">
+      <mesh>
+        <source id="ARENA-mesh-positions">
+          <float_array id="ARENA-mesh-positions-array" count="51">-13.71746 -7.2602 0.1875014 13.78342 -7.2602 0.1875014 -13.71746 7.239587 0.1875014 13.78342 7.239587 0.1875014 13.78342 7.239586 9.937502 -13.71746 7.239586 9.937502 -13.71746 -7.2602 9.937499 13.78342 -7.2602 9.937499 13.96702 7.510307 9.937502 -14.03298 7.510307 9.937502 -14.03298 -7.489693 9.937499 13.96702 -7.489693 9.937499 -14.03298 -7.489693 -0.06250238 -14.03298 7.510308 -0.06249856 13.96702 -7.489693 -0.06250238 13.96702 7.510308 -0.06249856 -11.72202 -3.352121 5.226795</float_array>
+          <technique_common>
+            <accessor source="#ARENA-mesh-positions-array" count="17" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="ARENA-mesh-normals">
+          <float_array id="ARENA-mesh-normals-array" count="51">0 0 1 0 1 0 -1 0 0 0 -1 0 0 -2.63086e-7 1 0 -2.54313e-7 1 0 -2.63086e-7 1 -1 2.03451e-7 0 -1 -2.0345e-7 0 0 -1 0 1 -2.03451e-7 0 1 2.0345e-7 0 0 1 0 0 2.54313e-7 -1 1 2.15866e-7 0 0 -1 0 1 0 0</float_array>
+          <technique_common>
+            <accessor source="#ARENA-mesh-normals-array" count="17" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="ARENA-mesh-map-0">
+          <float_array id="ARENA-mesh-map-0-array" count="168">1.003918 -0.002031326 -0.003917753 0.5293481 -0.003917753 -0.002031207 0.9972054 0.001029133 -0.001355528 0.6092333 0.002794444 0.001029133 0.002497494 0.001706361 0.9975025 0.6707712 0.002497494 0.6707712 -0.001323699 0.6741158 0.9999405 5.95357e-5 0.9997027 0.6639014 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 8.20537e-5 0.6723952 0.9999178 8.1988e-5 0.9999181 0.6723952 1.003918 -0.002031326 1.003918 0.5293481 -0.003917753 0.5293481 0.9972054 0.001029133 0.9999721 0.6064543 -0.001355528 0.6092333 0.002497494 0.001706361 0.9975023 0.001706242 0.9975025 0.6707712 -0.001323699 0.6741158 5.95357e-5 5.95357e-5 0.9999405 5.95357e-5 8.20537e-5 0.6723952 8.1988e-5 8.21195e-5 0.9999178 8.1988e-5</float_array>
+          <technique_common>
+            <accessor source="#ARENA-mesh-map-0-array" count="84" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="ARENA-mesh-vertices">
+          <input semantic="POSITION" source="#ARENA-mesh-positions"/>
+        </vertices>
+        <triangles material="Material_002-material" count="26">
+          <input semantic="VERTEX" source="#ARENA-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#ARENA-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#ARENA-mesh-map-0" offset="2" set="0"/>
+          <p>7 1 3 0 1 4 6 1 5 7 2 6 3 2 7 1 2 8 5 3 9 3 3 10 4 3 11 4 0 12 8 0 13 5 0 14 5 0 15 8 0 16 9 0 17 5 4 18 9 4 19 6 4 20 6 5 21 9 5 22 10 5 23 6 0 24 10 0 25 7 0 26 7 0 27 10 0 28 11 0 29 7 6 30 11 6 31 4 6 32 4 5 33 11 5 34 8 5 35 10 7 36 9 7 37 12 7 38 12 8 39 9 8 40 13 8 41 11 9 42 10 9 43 14 9 44 14 9 45 10 9 46 12 9 47 8 10 48 11 10 49 15 10 50 15 11 51 11 11 52 14 11 53 9 12 54 8 12 55 13 12 56 13 12 57 8 12 58 15 12 59 15 13 60 14 13 61 13 13 62 13 13 63 14 13 64 12 13 65 6 14 66 2 14 67 5 14 68 7 1 72 1 1 73 0 1 74 7 2 75 4 2 76 3 2 77 5 15 78 2 15 79 3 15 80 6 16 81 0 16 82 2 16 83</p>
+        </triangles>
+        <triangles material="Material_003-material" count="2">
+          <input semantic="VERTEX" source="#ARENA-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#ARENA-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#ARENA-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 69 3 0 70 2 0 71</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="ARENA" name="ARENA" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#ARENA-mesh" name="ARENA">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Material_002-material" target="#Material_002-material"/>
+              <instance_material symbol="Material_003-material" target="#Material_003-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

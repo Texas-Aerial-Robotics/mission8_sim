@@ -86,7 +86,7 @@ void ActorPlugin::Reset()
   if (this->sdf && this->sdf->HasElement("target"))
     this->target = this->sdf->Get<ignition::math::Vector3d>("target");
   else
-    this->target = ignition::math::Vector3d(0, -5, 1.2138);
+    this->target = ignition::math::Vector3d(2, -5, 1.2138);
 
   auto skelAnims = this->actor->SkeletonAnimations();
   if (skelAnims.find(WALKING_ANIMATION) == skelAnims.end())

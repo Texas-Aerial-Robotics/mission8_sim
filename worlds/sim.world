@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <sdf version="1.4">
   <world name="default">
+
      <include>
-      <uri>model://walls</uri>
-      <pose> 0 0 -.61 1.57 0 1.57</pose>
+      <uri>model://Arena</uri>
+      <pose> 7.5 0 -0.17  0 0 1.570</pose>
      </include>
 
 
@@ -283,7 +284,7 @@
     </model>
 
     <actor name="actor2">
-      <pose>5 5 1 0 0 0</pose>
+      <pose>0 0 0 0 0 0</pose>
       <skin>
         <filename>walk.dae</filename>
         <scale>1.0</scale>
