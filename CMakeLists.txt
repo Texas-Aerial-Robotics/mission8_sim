@@ -197,14 +197,25 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  gazebo_ros 
+  gazebo_ros
+  message_generation 
 )
+add_message_files(
+  FILES
+  actor.msg
+)
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+  )
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
-  CATKIN_DEPENDS roscpp std_msgs rospy gazebo_ros
+  CATKIN_DEPENDS roscpp std_msgs rospy gazebo_ros message_runtime
   DEPENDS Boost
 )
+
+
 
 find_package(gazebo REQUIRED)
 find_package(OpenGL REQUIRED)

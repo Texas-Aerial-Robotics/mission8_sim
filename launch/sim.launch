@@ -2,6 +2,11 @@
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find mission8_sim)/worlds/sim.world"/>
+    <node pkg="mission8_sim" type="mission8_node" name="sim"/>
+    <node pkg="mission8_sim" type="actor_teleop_key" name="teleop" output="screen"/>
+     <node name="actor_tf_broadcaster" pkg="mission8_sim" type="actor_tf_broadcaster.py" respawn="false" output="screen" >
+      <param name="actor" type="string" value="actor" />
+    </node>
     <!-- more default parameters can be changed here -->
   </include>
 </launch>

@@ -345,7 +345,7 @@
           <updateRate>0.0</updateRate>
           <cameraName>actor/webcam</cameraName>
           <imageTopicName>image_raw_3</imageTopicName>
-          <cameraInfoTopicName>camera_info_3</cameraInfoTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
           <frameName>camera_link3</frameName>
           <pointCloudCutoff>0.05</pointCloudCutoff>
           <hackBaseline>0.07</hackBaseline>
