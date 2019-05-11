@@ -90,7 +90,7 @@
 
    <!-- add new camera -->
       <link name='camera1'>
-         <pose>.04 .03 0.1 0 0.57 0</pose>
+         <pose>.04 .03 0.1 0 0 0</pose>
         <inertial>
           <mass>0.1</mass>
           <inertia>
@@ -168,7 +168,7 @@
       </joint>
       <!-- add new camera -->
       <link name='camera2'>
-         <pose>.04 -.03 0.1 0 0.57 0</pose>
+         <pose>.04 -.03 0.1 0 0 0</pose>
         <inertial>
           <mass>0.1</mass>
           <inertia>
