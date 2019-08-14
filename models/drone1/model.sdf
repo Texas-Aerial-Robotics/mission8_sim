@@ -194,7 +194,7 @@
              <gaussianNoise>0.005</gaussianNoise>
              <alwaysOn>true</alwaysOn>
              <updateRate>50</updateRate>
-             <topicName>drone2/sensor/sonar/front</topicName>
+             <topicName>drone1/sensor/sonar/front</topicName>
              <frameName>base_sonar_front</frameName>
              <radiation>INFRARED</radiation>
              <fov>0.2967</fov>
@@ -276,7 +276,7 @@
              <gaussianNoise>0.005</gaussianNoise>
              <alwaysOn>true</alwaysOn>
              <updateRate>50</updateRate>
-             <topicName>drone2/sensor/sonar/left</topicName>
+             <topicName>drone1/sensor/sonar/left</topicName>
              <frameName>base_sonar_left</frameName>
              <radiation>INFRARED</radiation>
              <fov>0.2967</fov>
@@ -358,7 +358,7 @@
              <gaussianNoise>0.005</gaussianNoise>
              <alwaysOn>true</alwaysOn>
              <updateRate>50</updateRate>
-             <topicName>drone2/sensor/sonar/right</topicName>
+             <topicName>drone1/sensor/sonar/right</topicName>
              <frameName>base_sonar_right</frameName>
              <radiation>INFRARED</radiation>
              <fov>0.2967</fov>
@@ -440,7 +440,7 @@
              <gaussianNoise>0.005</gaussianNoise>
              <alwaysOn>true</alwaysOn>
              <updateRate>50</updateRate>
-             <topicName>drone2/sensor/sonar/back</topicName>
+             <topicName>drone1/sensor/sonar/back</topicName>
              <frameName>base_sonar_back</frameName>
              <radiation>INFRARED</radiation>
              <fov>0.2967</fov>

@@ -217,19 +217,19 @@ catkin_package(
 
 
 
-find_package(gazebo REQUIRED)
-find_package(OpenGL REQUIRED)
-find_package(GLEW REQUIRED)
-add_executable(InnerVoice src/testKeyTalker.cpp)
+# find_package(gazebo REQUIRED)
+# find_package(OpenGL REQUIRED)
+# #find_package(GLEW REQUIRED)
+# add_executable(InnerVoice src/testKeyTalker.cpp)
 
 #target_link_libraries(oldtalker ${catkin_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} glfw)
 
-target_link_libraries(InnerVoice ${catkin_LIBRARIES} glfw GLEW GLU GL)
+#target_link_libraries(InnerVoice ${catkin_LIBRARIES} glfw GLEW GLU GL)
 
 # \Depend on system install of Gazebo
 
-link_directories(${GAZEBO_LIBRARY_DIRS})
-include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
-include_directories(${OPENGL_INCLUDE_DIR} ${GLEW_INLCLUDE_DIR})
+# link_directories(${GAZEBO_LIBRARY_DIRS})
+# include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
+# include_directories(${OPENGL_INCLUDE_DIR} ${GLEW_INLCLUDE_DIR})
 
 
